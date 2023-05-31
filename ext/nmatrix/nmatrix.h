@@ -401,7 +401,7 @@ NM_DEF_STRUCT_POST(NM_GC_HOLDER);       // };
 
 #define NM_CHECK_ALLOC(x) if (!x) rb_raise(rb_eNoMemError, "insufficient memory");
 
-#define RB_FILE_EXISTS(fn)   (rb_funcall(rb_const_get(rb_cObject, rb_intern("File")), rb_intern("exists?"), 1, (fn)) == Qtrue)
+#define RB_FILE_EXISTS(fn)   (rb_funcall(rb_const_get(rb_cObject, rb_intern("File")), rb_intern("exist?"), 1, (fn)) == Qtrue)
 
 #define IsNMatrixType(v)  (RB_TYPE_P(v, T_DATA) && (RDATA(v)->dfree == (RUBY_DATA_FUNC)nm_delete || RDATA(v)->dfree == (RUBY_DATA_FUNC)nm_delete_ref))
 #define CheckNMatrixType(v)   if (!IsNMatrixType(v)) rb_raise(rb_eTypeError, "expected NMatrix on left-hand side of operation");

@@ -64,10 +64,10 @@ idefaults = {lapack: ["/usr/include/atlas"],
 
 # For some reason, if we try to look for /usr/lib64/atlas on a Mac OS X Mavericks system, and the directory does not
 # exist, it will give a linker error -- even if the lib dir is already correctly included with -L. So we need to check
-# that Dir.exists?(d) for each.
-ldefaults = {lapack: ["/usr/local/lib", "/usr/local/atlas/lib", "/usr/lib64/atlas"].delete_if { |d| !Dir.exists?(d) },
-             cblas: ["/usr/local/lib", "/usr/local/atlas/lib", "/usr/lib64/atlas"].delete_if { |d| !Dir.exists?(d) },
-             atlas: ["/usr/local/lib", "/usr/local/atlas/lib", "/usr/lib", "/usr/lib64/atlas"].delete_if { |d| !Dir.exists?(d) }}
+# that Dir.exist?(d) for each.
+ldefaults = {lapack: ["/usr/local/lib", "/usr/local/atlas/lib", "/usr/lib64/atlas"].delete_if { |d| !Dir.exist?(d) },
+             cblas: ["/usr/local/lib", "/usr/local/atlas/lib", "/usr/lib64/atlas"].delete_if { |d| !Dir.exist?(d) },
+             atlas: ["/usr/local/lib", "/usr/local/atlas/lib", "/usr/lib", "/usr/lib64/atlas"].delete_if { |d| !Dir.exist?(d) }}
 
 if have_library("clapack") # Usually only applies for Mac OS X
   $libs += " -lclapack "

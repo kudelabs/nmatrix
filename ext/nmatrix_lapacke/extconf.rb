@@ -46,8 +46,8 @@ $srcs = basenames.map { |b| "#{b}.cpp" }
 
 # For some reason, if we try to look for /usr/lib64/atlas on a Mac OS X Mavericks system, and the directory does not
 # exist, it will give a linker error -- even if the lib dir is already correctly included with -L. So we need to check
-# that Dir.exists?(d) for each.
-ldefaults = {lapack: ["/usr/local/lib"].delete_if { |d| !Dir.exists?(d) } }
+# that Dir.exist?(d) for each.
+ldefaults = {lapack: ["/usr/local/lib"].delete_if { |d| !Dir.exist?(d) } }
 
 # It is not clear how this variable should be defined, or if it is necessary at all. 
 # See issue https://github.com/SciRuby/nmatrix/issues/403
